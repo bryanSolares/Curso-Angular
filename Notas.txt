@@ -1,0 +1,6 @@
+Versionamiento y significado
+7.0.2
+
+2=Parches, retrocompatible, arreglo de errores
+0=Actualización menor, agrega funcionalidades, retro compatible 
+7=Versión mayor, puede ser o no retro compatible
