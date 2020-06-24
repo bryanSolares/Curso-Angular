@@ -4,3 +4,14 @@ Versionamiento y significado
 2=Parches, retrocompatible, arreglo de errores
 0=Actualización menor, agrega funcionalidades, retro compatible 
 7=Versión mayor, puede ser o no retro compatible
+
+
+Video 1.10
+compilación de codigo typescript a js => tsc nombrearchivo.ts
+para generar archivo de configuración ts => tsc --init
+noImplicitAny => nada declarado como any
+tsc -w => entra en modo observador para compilación automática
+encabezado de tsconfig despues de llaves colocar para excluir directorios para compilación => exclude = ["nombredirectorio"]
+
+Video 1.16
+Primero son los argumentos obligatorios, opcionales por último por defecto.
