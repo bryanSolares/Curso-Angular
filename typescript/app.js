@@ -1,9 +1,29 @@
 "use strict";
-//Funcion anónima autoinvocada.
-(function () {
-    function saludar(nombre) {
-        console.table("Hola " + nombre + " como est\u00E1s");
+() => {
+    /*class Avenger {
+          nombre:string;
+          equipo:string;
+          nombreReal:string;
+          puedePelear:boolean;
+          peleasGanadas:number;
+  
+          constructor(nombre:string, equipo:string, nombreReal:string,puedePelear:boolean,peleasGanadas:number){
+              this.nombre = nombre;
+              this.equipo = equipo;
+              this.nombreReal = nombreReal;
+              this.puedePelear = puedePelear;
+              this.peleasGanadas = peleasGanadas;
+          }
+      }*/
+    class Avenger {
+        constructor(nombre, equipo, nombreReal, peleasGanadas = 0, puedePelear) {
+            this.nombre = nombre;
+            this.equipo = equipo;
+            this.nombreReal = nombreReal;
+            this.peleasGanadas = peleasGanadas;
+            this.puedePelear = puedePelear;
+        }
     }
-    var wolverine = { nombre: "Logan" };
-    saludar(wolverine.nombre);
-})();
+    const antman = new Avenger("Antman", "Cap", "Steve");
+    console.log(antman);
+};

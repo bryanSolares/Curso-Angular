@@ -15,3 +15,63 @@ encabezado de tsconfig despues de llaves colocar para excluir directorios para c
 
 Video 1.16
 Primero son los argumentos obligatorios, opcionales por último por defecto.
+
+Video 2.19
+Promesas= código que se ejecuta y que permite no bloquear el código de mi aplicación
+Las promesas no se pueden traducir a ES5
+
+Video 2.23
+Es convesión que las clases tengan la primera letra capitalizada
+
+Video 2.26
+Añadido que se coloca antes de la definición de la clase
+Permite añadir funcionalidad a la clase, se inicia con @nombredecorador
+
+Video 3.35
+Los componentes, pequeñas clases que cumplen una tarea en especifico:
+1.Menu de navegacion
+2.Barra lateral
+3.Subbloques
+4.Pie de aplicación
+Son clases normales que tiene un decorador en especifico
+
+DIRECTIVAS ESTRUCTURALES:
+Le dicen al html que debe hacer:
+*ngIf
+*ngFor
+
+Video 3.38
+Para crear un proyecto => ng new nombreaplicacion
+Para correr aplicacion en puerto por defecto 4201 => ng serve -o
+
+Video 3.39
+Estructura de un proyecto angular
+e2e = carpeta destinada al manejor de prueba de extremo a extremo
+node_modules = modulos de nodejs, no se debe subir a un repositorio
+src = se encuentra la aplicación angular
+    app = archivos de nuestra aplicación
+        component.ts = primer componenete que la aplicación cargará
+        component.html = html del componente en especifico
+        component.css = css del componente en especifico
+        component.spec.ts = para pruebas automáticas
+        module.ts = contenedor del módulo y decoradores especiales
+    assents = donde se coloca recursos estaticos
+        .gitkeep = sirve para subir la carpeta a git
+    enviroments = contenedor de variables de ambiente
+        environment.ts = variables de ambiente de desarrollo
+        environment.prod.ts = variables de ambiente de produccion
+    browserslist = para ajustar css o mejor soporte de css
+    index.html = renderiza la aplicación aquí
+    main.ts = configuracion inicial para ambiente de aplicacion web
+    polyfills.ts = para configuración de navegadores viejos
+    styles.css = estilos globales para la aplicación
+karma.conf.js = pruebas de karma
+.editorconfig = configuraciones del editor
+.gitignore = archivos que ignora carpetas para commit
+angular.json = archivo que le dice a angular como es nuestra aplicacion y como funciona
+browserslist = configuración para soporte de navegadores
+package-lock = como le dice a node como fue creado el package.json
+package.json = archivo importante. 
+README.md = explica como funciona la aplicacion
+tsconfig.json = le dice a typescript como trabajar
+tslint.json = forzará a escribir un código más limpio de ts
