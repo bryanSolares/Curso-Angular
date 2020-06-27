@@ -6,28 +6,28 @@ Versionamiento y significado
 7=Versión mayor, puede ser o no retro compatible
 
 
-Video 1.10
+Video 1.10***************************************************************
 compilación de codigo typescript a js => tsc nombrearchivo.ts
 para generar archivo de configuración ts => tsc --init
 noImplicitAny => nada declarado como any
 tsc -w => entra en modo observador para compilación automática
 encabezado de tsconfig despues de llaves colocar para excluir directorios para compilación => exclude = ["nombredirectorio"]
 
-Video 1.16
+Video 1.16***************************************************************
 Primero son los argumentos obligatorios, opcionales por último por defecto.
 
-Video 2.19
+Video 2.19***************************************************************
 Promesas= código que se ejecuta y que permite no bloquear el código de mi aplicación
 Las promesas no se pueden traducir a ES5
 
-Video 2.23
+Video 2.23***************************************************************
 Es convesión que las clases tengan la primera letra capitalizada
 
-Video 2.26
+Video 2.26***************************************************************
 Añadido que se coloca antes de la definición de la clase
 Permite añadir funcionalidad a la clase, se inicia con @nombredecorador
 
-Video 3.35
+Video 3.35***************************************************************
 Los componentes, pequeñas clases que cumplen una tarea en especifico:
 1.Menu de navegacion
 2.Barra lateral
@@ -40,11 +40,11 @@ Le dicen al html que debe hacer:
 *ngIf
 *ngFor
 
-Video 3.38
+Video 3.38***************************************************************
 Para crear un proyecto => ng new nombreaplicacion
 Para correr aplicacion en puerto por defecto 4201 => ng serve -o
 
-Video 3.39
+Video 3.39***************************************************************
 Estructura de un proyecto angular
 e2e = carpeta destinada al manejor de prueba de extremo a extremo
 node_modules = modulos de nodejs, no se debe subir a un repositorio
@@ -54,7 +54,7 @@ src = se encuentra la aplicación angular
         component.html = html del componente en especifico
         component.css = css del componente en especifico
         component.spec.ts = para pruebas automáticas
-        module.ts = contenedor del módulo y decoradores especiales
+        module.ts = contenedor de módulos y decoradores especiales
     assents = donde se coloca recursos estaticos
         .gitkeep = sirve para subir la carpeta a git
     enviroments = contenedor de variables de ambiente
@@ -75,3 +75,62 @@ package.json = archivo importante.
 README.md = explica como funciona la aplicacion
 tsconfig.json = le dice a typescript como trabajar
 tslint.json = forzará a escribir un código más limpio de ts
+
+Video 3.40***************************************************************
+Como convención cuando se crea un componente despues del nombre sería= nombre.component.ts
+Esto indentifica el archivo de manera entendible
+Para utilizar un componente se debe exportar la clase y en el app.module.ts se debe agregar a ***********declarations***************
+Para convertir una clase componente es necesario agregar el decorador Component de @angular/core
+
+Video 3.42***************************************************************
+Para crear componentes:
+ng g c ubicacion/nombrecomponenete
+
+Video 3.44***************************************************************
+DIRECTIVAS
+*ngFor
+*ngIf
+
+Video 4.51 ***************************************************************
+Son tres formas las cuales se pueden utilizar para instalar bootstrap
+1. Direcciones de la web
+2. Descargar los archivos
+3. Instalar desde npm <- aquí se debe modificar el archivo angular.json
+ La desventaja de hacer en la forma tres, es que las librerias forman parte del bundle y la aplicación pesaría más.
+                         "styles": [
+                            "src/styles.css",
+                            "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+                        ],
+                        "scripts": [
+                            "./node_modules/jquery/dist/jquery.slim.min.js",
+                            "./node_modules/popper.js/dist/umd/popper.min.js",
+                            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+                        ]
+
+Video 4.52 ***************************************************************
+para crear un componente sin estilos: ng g c nombrecomponente -is
+
+Video 4.53 ***************************************************************
+para crear rutas es necesario seguir la estructura, en src:
+
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+
+const APP_ROUTES: Routes = [
+  { path: 'home', component:  HomeComponent},
+  { path: '**', pathMatch: 'full', redirectTo: '' },
+];
+
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES,{useHash:true});
+
+luego se importa la constantes en app.module.ts y se coloca en la sección de imports
+
+// Rutas
+import { APP_ROUTING } from './app.module.routes';
+imports: [
+    BrowserModule,
+    APP_ROUTING
+        ],
+
+Cuando se utiliza la opción de userHash:true, no es necesaria la línea en el html principal: -> <base href="/">
+de lo contrario es obligatorio
