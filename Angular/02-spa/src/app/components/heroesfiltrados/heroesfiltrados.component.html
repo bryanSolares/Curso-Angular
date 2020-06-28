@@ -1,5 +1,13 @@
-<h1>Héroes <small>Marvel y DC</small> </h1>
+<h1>Buscando: {{termino}}</h1>
 <hr>
+
+<div class="row animated fadeIn fast" *ngIf="heroes.length === 0">
+    <div class="col-md-12">
+        <div class="alert alert-info">
+            No existen resulados con el termino: {{termino}}
+        </div>
+    </div>
+</div>
 
 <div class="card-columns">
     <div class="card animated fadeIn fast" *ngFor="let heroe of heroes">
@@ -9,7 +17,6 @@
             <p class="card-text">{{heroe.bio}} </p>
             <p class="card-text"><small class="text-muted">{{heroe.aparicion}} </small></p>
             <button (click)="verHeroe(heroe.id)" type="button" class="btn btn-outline-primary btn-block">Ver más información {{heroe.casa}} </button>
-
             <a [routerLink]="['/heroe',heroe.id] " class="btn btn-outline-primary btn-block">Ver más información.....</a>
         </div>
     </div>

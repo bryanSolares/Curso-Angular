@@ -134,3 +134,64 @@ imports: [
 
 Cuando se utiliza la opción de userHash:true, no es necesaria la línea en el html principal: -> <base href="/">
 de lo contrario es obligatorio
+
+Video 4.54 ***************************************************************
+Para hacer una navegación entre paginas se debe implementas [routerLink] en lugar de a href, debo a que es una pagína estática
+[routerLink]="['ruta']" <- arreglo de direcciones
+
+routerLinkActive="active" <- para indicar que una ruta tiene el foco o está activa
+
+Video 4.56 ***************************************************************
+SERVICIOS:
+Bridar información a quién lo necesite
+Realizar peticiones CRUD
+Mantener la data de forma persistente
+Servir como recurso re-utilizable para nuestra aplicación
+
+Video 4.57 ***************************************************************
+Como estándar para nombrar un archivo de servicio es:
+nombre.service.ts
+
+Para crear un servicio se debe colocar a la clase un decorador -> Injectable = @angular/core
+
+Para que la aplicación entienda que tiene un servicio para usar se debe colocar el servicio en app.module.ts
+Se debe colocar en sección de providers
+providers: [
+    HeroesService
+            ]
+Para utilizarlo en el componente, se debe importar en éste y luego instanciarlo en el constructor
+
+
+Video 4.59 ***************************************************************
+Para hacer un direccionamiento a una pagina nueva se puede hacer de dos formas:
+1. con la etiqueta a y usando [routerLink]="['/ruta',parametro]"
+2. mediante un método en un botón button (click)="nombremetodo(parametro)" -> aquí usar en método router.navigate(['/ruta',parametro])
+
+Video 4.60 ***************************************************************
+Para recibir los parametros enviados mediante url, se hace con la clase ActivatedRoute en @angular/router
+con una instancia de éste clase se puede recibir el el parámetro bajo una subscripcion
+
+this.activetedRoute.params.subscribe(params => {
+      console.log(params['nombreparametro']);
+    })
+
+Video 4.63 ***************************************************************
+PIPES:
+Transforman la data en el template, ayudarán a que la data se vea mejor
+*currency
+*date
+*uppercase
+*json
+*limitTo
+*lowercase
+*asyc
+*decimal
+*percet
+
+Un ejemplo para use de pipes en el html:
+<h1 class="animated fadeIn"> {{heroe.nombre | uppercase}} <small>({{heroe.aparicion | date:'y'}})</small> </h1>
+
+Video 4.64 ***************************************************************
+Para agregar un evento sobre cualquier elemento HTML se procede:
+(keyup.enter)="nombrefuncion(buscarTexto.value)"
+(click)="nombrefuncion(buscarTexto.value)"
