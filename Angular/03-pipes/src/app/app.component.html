@@ -1,0 +1,139 @@
+<h1 class="mt-3">Pipes <small>Angular</small></h1>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Variable</th>
+          <th>Pipe</th>
+          <th>Salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ nombre }}</td>
+          <td>uppercase</td>
+          <td>{{ nombre | uppercase }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ nombre }}</td>
+          <td>lowercase</td>
+          <td>{{ nombre | lowercase }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ nombre }}</td>
+          <td>slice:3</td>
+          <td>{{ nombre | slice: 3 }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ nombre }}</td>
+          <td>slice:0:3</td>
+          <td>{{ nombre | slice: 0:3 }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ arreglo }}</td>
+          <td>slice:1:5</td>
+          <td>{{ arreglo | slice: 1:5 }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ PI }}</td>
+          <td>number:'3.0-0'</td>
+          <td>{{ PI | number: "3.0-0" }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ PI }}</td>
+          <td>number:'.0-2'</td>
+          <td>{{ PI | number: ".0-2" }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ porcentaje }}</td>
+          <td>percet</td>
+          <td>{{ porcentaje | percent }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ porcentaje }}</td>
+          <td>percet:'2.2-2'</td>
+          <td>{{ porcentaje | percent: "2.2-2" }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ salario }}</td>
+          <td>currency</td>
+          <td>{{ salario | currency }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ salario }}</td>
+          <td>currency:'GTQ'</td>
+          <td>{{ salario | currency: "GTQ " }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ salario }}</td>
+          <td>currency:'BRY ':'symbol-narrow':'.0-0'</td>
+          <td>{{ salario | currency: "BRY ":"symbol-narrow":".0-0" }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ valorPromesa }}</td>
+          <td>async</td>
+          <td>{{  valorPromesa | async }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ fecha }}</td>
+          <td>fecha</td>
+          <td>{{  fecha | date }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ fecha }}</td>
+          <td>fecha:'medium'</td>
+          <td>{{  fecha | date:'medium' }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ fecha }}</td>
+          <td>fecha:'short'</td>
+          <td>{{  fecha | date:'short' }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ fecha }}</td>
+          <td>fecha:'MMMM -dd'</td>
+          <td>{{  fecha | date:'MMMM -dd' }}</td>
+        </tr>
+
+
+
+
+      </tbody>
+    </table>
+
+    <h3>Slice</h3>
+    <hr />
+    <ul>
+      <li *ngFor="let item of arreglo | slice: 5:20">{{ item }}</li>
+    </ul>
+
+    <h3>JSON</h3>
+    <hr />
+    <div class="row mb-5">
+      <div class="col">
+        <pre>
+          {{ heroe |json }}
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>

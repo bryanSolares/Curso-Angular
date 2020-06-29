@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HeroesService, Heroe } from '../../servicios/heroes.service';
 import { ActivatedRoute,Router } from '@angular/router';
 
@@ -13,7 +13,8 @@ export class HeroesfiltradosComponent implements OnInit {
   heroes: Heroe[];
   termino:string;
 
-  constructor(private _heroesService: HeroesService, private activedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private _heroesService: HeroesService, private activedRoute: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe(params => {
@@ -25,4 +26,5 @@ export class HeroesfiltradosComponent implements OnInit {
   verHeroe(indice: number){
     this.router.navigate(['/heroe', indice]);
   }
+
 }

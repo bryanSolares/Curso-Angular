@@ -195,3 +195,69 @@ Video 4.64 ***************************************************************
 Para agregar un evento sobre cualquier elemento HTML se procede:
 (keyup.enter)="nombrefuncion(buscarTexto.value)"
 (click)="nombrefuncion(buscarTexto.value)"
+
+
+Video 4.68 ***************************************************************
+Para genera un componente sin el archivo de pruebas:
+ng g c nombrecomponenete --spec=false
+Para enviar información de un componente padre a un hijo se usa el decorador @Input() en el componente donde se recibirá la información, en el componenete se debe colocar éste decorador a los atributos que recibiran el valor del padre.
+  @Input() heroe: any = {};
+  @Input() id: number;
+
+Para enviar los datos desde el padre:
+<app-heroe-tarjeta [heroe]="heroe" [id]="heroe.id" *ngFor="let heroe of heroes"></app-heroe-tarjeta>
+entre llaves cuadradas se coloca el nombre de la variable que está recibirá el valor y dentro de las comillas lo que se envia.
+
+
+Video 4.69 ***************************************************************
+Para utilizar métodos del padre desde hijo es necesario que desde el hijo que proceda a hacer una salida (@Output decorador), acompañado de un EventEmitter que será el transmisor del evento.
+
+En el componenete hijo se debe instanciar un EventEmmiter que será el emisor desde el padre. En el método donde que se utilizará para activar el emisor se emitirá el dato hacía el padre. En el padre se asimilará un evento que será el escuchador con el mismo nombre del Emitter en lugar de click ((click) = (nombre eventemitter)), luego de ésto éste escuchador será el que dispare la función propia del padre. El resultado sería:
+
+HIJO:
+@Output() heroeSeleccionado: EventEmitter<number>;
+
+constructor(private router: Router) 
+{
+    this.heroeSeleccionado = new EventEmitter();
+}
+
+<button (click)="verHeroe()">
+
+verHeroe() 
+{
+    this.heroeSeleccionado.emit(this.id);
+}
+
+PADRE:
+ <app-heroe-tarjeta (heroeSeleccionado)="verHeroe($event)"  
+
+verHeroe(indice: number)
+{
+    this.router.navigate(['/heroe', indice]);
+}
+
+
+
+SECCION 5 ***************************************************************
+Manejo de pipes (Tuberias |): sirven para transformar data en el html de manera visual
+
+Slice = permite cortar, éste requiere un parámetro por lo menos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
