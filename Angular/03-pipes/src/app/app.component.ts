@@ -30,4 +30,12 @@ export class AppComponent {
 
   fecha:Date = new Date();
 
+  idioma:string = "es";
+
+  nombre2 = "BryAn JoSue SoLaREs";
+
+  videoUrl:string = "https://www.youtube.com/embed/n3wL-_ptXew";
+
+  activar: boolean = true;
+
 }

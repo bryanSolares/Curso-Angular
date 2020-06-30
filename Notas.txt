@@ -245,9 +245,72 @@ Manejo de pipes (Tuberias |): sirven para transformar data en el html de manera 
 Slice = permite cortar, éste requiere un parámetro por lo menos
 
 
+para configuración de idioma de acuerdo al pais donde se necesite (por defecto angular se configura en inglés)
+ng add @angular/localize
+import { registerLocaleData  } from "@angular/common";
+import localEs from "@angular/common/locales/es";
 
+registerLocaleData(localEs);
+ providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
+    }
 
+Para crear un pipe personalizado con angular cli: 
+ng g p nombrepipe
 
+Colocará un decorador @Pipe = @angular/core
+
+Para cargar recursos que son externos y el DOM los cataloga como inseguros de debe crear un pipe
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+@Pipe({
+  name: 'domseguro'
+})
+export class DomseguroPipe implements PipeTransform {
+
+  constructor(private domSanitizer: DomSanitizer){}
+
+  transform(value: string, ...args: unknown[]): SafeResourceUrl {
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(value);
+  }
+
+}
+
+<iframe
+      width="560"
+      height="315"
+      [src]="videoUrl | domseguro"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+ 
+
+SECCION 6 ***************************************************************
+Para utilizar la funcionalidad de peticiones es necesario agregar a los imports en app.module.ts el HttpClientModule de @angular/common/http
+y luego en donde se quiere agregar la funcionalidad de peticiones http se importa la característa de la anterior importación: HttpClient de @angular/common/http
+-------------------------------------------------------------------------------------
+Cuando en un servicio se encuentre el decorador:
+@Injectable({
+  providedIn: 'root'
+})
+significará que no es necesario la importación en la sección de providers en el app.module.ts
+
+-------------------------------------------------------------------------------------
+Para añadir encabezados (headers) a una petición http se hace:
+import { HttpHeaders } from '@angular/common/http';
+const headers = new HttpHeaders({
+      Authorization:
+        'Bearer BQBjnRXm4jN9yTvM4mJdK9zk8B4CJHrk-h2MMlmOfgdv3Y25GXEeJZwNcHlb1FPxx7zKqo0E_wpD75_o5CQ',
+    });
+
+this.http
+      .get('https://api.spotify.com/v1/browse/new-releases', {headers})
+      .subscribe((data) => console.log(data));
 
 
 
