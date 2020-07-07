@@ -312,8 +312,15 @@ this.http
       .get('https://api.spotify.com/v1/browse/new-releases', {headers})
       .subscribe((data) => console.log(data));
 
-
-
+SECCION 7 ***************************************************************
+Cuando se reciben parametros para no obtar para una subscripción contantes se puede usar un snapshot
+const listaId = activatedRoute.snapshot.paramMap.get("listaId");
+--------------------------------------------------------------------------------
+Para usar un databinding (emisor y escuchador) se utiliza:
+[(ngModel)]="nombreVariableDeclarada"
+--------------------------------------------------------------------------------
+El evento ionChange se dispara cada vez que hay un cambio en el checkbox
+(ionChange)="nombreMetodoAEjecutar()"
 
 
 
