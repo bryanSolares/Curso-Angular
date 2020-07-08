@@ -321,7 +321,52 @@ Para usar un databinding (emisor y escuchador) se utiliza:
 --------------------------------------------------------------------------------
 El evento ionChange se dispara cada vez que hay un cambio en el checkbox
 (ionChange)="nombreMetodoAEjecutar()"
+--------------------------------------------------------------------------------
+Creación de módulos
+NgModule = decorador que permite a una clase identificarla o hacer un módulo
+CommonModule = lo que permite es la funcionalidad de ngIf, ngFor, etc
+declarations = componentes que utiliza el módulo propiamente
+exports = se colocará todo lo que se utilizará externamente
+Para integrar funcionalidad de otros módulos en un módulo en especifico es necesario hacer la importación del módulo
 
+módulo hijo
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ListasComponent } from "./listas/listas.component";
+
+@NgModule({
+  declarations: [ListasComponent],
+  exports: [ListasComponent],
+  imports: [CommonModule],
+})
+export class ComponentsModule {}
+
+
+módulo donde se usará
+import { ComponentsModule } from "../../components/components.module";
+
+@NgModule({
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    ComponentsModule,
+    Tab1PageRoutingModule
+  ],
+  declarations: [Tab1Page]
+})
+export class Tab1PageModule {}
+--------------------------------------------------------------------------------
+Pipes impuros
+@Pipe({
+  name: 'filtroCompletado',
+  pure: false
+})
+
+cada vez que se dispare en ciclo de detección de cambios, siempre se llamará el filtro
+--------------------------------------------------------------------------------
+@ViewChild('lista') lista: IonList;
+permite llamar un elemento del html y poder utilizarlo dentro del component.ts
 
 
 
