@@ -368,11 +368,118 @@ cada vez que se dispare en ciclo de detección de cambios, siempre se llamará e
 @ViewChild('lista') lista: IonList;
 permite llamar un elemento del html y poder utilizarlo dentro del component.ts
 
+SECCION 8 ***************************************************************
+1.Cambios en el estilo de algún elemento HTML utilizando variables en los componentes.
+2.Comprender y aplicar CSS en un determinado scope, sin afectar los demás componentes. 
+3.Adicionar y remover clases según variables o cualquier tipo de condición.
+4.Crearemos directivas personalizadas.
+5.Uso del ngSwitch.
+6.Crearemos una pequeña aplicación para el uso de rutas y rutas hijas.
+7.Comprenderemos el ciclo de vida de un componente o directiva.
+--------------------------------------------------------------------------------
+ngStyle = permite aplicar estilos de css en tiempo de ejecución
+<some-element [ngStyle]="{'font-style': styleExp}">...</some-element>
+<some-element [ngStyle]="{'max-width.px': widthExp}">...</some-element>
+<some-element [ngStyle]="objExp">...</some-element>
+
+
+<p [style.fontSize.px]="tam">
+      Hola.... mundo éste es un párrafo
+    </p>
+
+    <button class="btn btn-primary" (click)="tam=tam+5">
+      <i class="fa fa-plus" ></i>
+    </button>
+
+    <button class="btn btn-primary" (click)="tam=tam-5">
+      <i class="fa fa-minus" ></i>
+    </button>
+--------------------------------------------------------------------------------
+Cada componenete tiene su propio scope en el css
+ styles: [`
+    p{
+      color:red;
+      font-size:20px;
+    }
+  `]
+--------------------------------------------------------------------------------
+ngClass = mejora la funcionalidad de ngStyle, ya que son clases en especifico dinámicas a aplicar, la clase aplicada la concatena a la existente
+<some-element [ngClass]="'first second'">...</some-element>
+<some-element [ngClass]="['first', 'second']">...</some-element>
+<some-element [ngClass]="{'first': true, 'second': true, 'third': false}">...</some-element>
+<some-element [ngClass]="stringExp|arrayExp|objExp">...</some-element>
+<some-element [ngClass]="{'class1 class2 class3' : true}">...</some-element>
+
+<div [ngClass]="alert"  class="alert" role="alert">
+  <strong>Well Done!</strong> You successfully read this important alert message.
+</div>
+
+<button class="btn btn-info" (click)="alert = 'alert-info'"> Info </button>
+<button class="btn btn-success" (click)="alert = 'alert-success'"> Success </button>
+<button class="btn btn-danger" (click)="alert = 'alert-danger'"> Danger </button>
+<button class="btn btn-warning" (click)="alert = 'alert-warning'"> Warning </button>
+<button class="btn btn-dark" (click)="alert = 'alert-dark'"> Dark </button>
+
+<button  (click)="propiedades.danger = !propiedades.danger"
+  [ngClass]="{
+    'btn-danger': propiedades.danger,
+    'btn-info': !propiedades.danger
+  }"
+  class="btn">
+  Cambiar
+</button>
+--------------------------------------------------------------------------------
+Directivas Personalizadas:
+para crear una directiva = ng g d directives/resaltado
+import { Directive } from '@angular/core';
+@Directive({
+  selector: '[appResaltado]'
+})
+export class ResaltadoDirective {
+  constructor() { }
+}
+
+en el módulo principal se añade a las declaraciones
+
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appResaltado]',
+})
+export class ResaltadoDirective {
+  @Input('appResaltado') nuevoColor: string;
+
+  constructor(private el: ElementRef) {
+    console.log('Directiva llamada');
+    // el.nativeElement.style.backgroundColor = 'Yellow';
+  }
+
+  @HostListener('mouseenter') mouseEntro() {
+    this.resaltar(this.nuevoColor || 'yellow');
+  }
+
+  @HostListener('mouseleave') mouseSalio() {
+    this.resaltar(null);
+  }
+
+  private resaltar(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+}
+--------------------------------------------------------------------------------
+ngSwitch:
+<div [ngSwitch]="alerta">
+  <div *ngSwitchCase="'primary'">primary</div>
+  <div *ngSwitchCase="'secondary'">secondary</div>
+  <div *ngSwitchCase="'dark'">dark</div>
+  <div *ngSwitchDefault>danger</div>
+</div>
+--------------------------------------------------------------------------------
+Rutas hijas:
 
 
 
+--------------------------------------------------------------------------------
 
-
-
-
+--------------------------------------------------------------------------------
 
