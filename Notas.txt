@@ -475,9 +475,43 @@ ngSwitch:
   <div *ngSwitchDefault>danger</div>
 </div>
 --------------------------------------------------------------------------------
-Rutas hijas:
+Rutas hijas: para recibir los parametros del padre desde los hijos
+    this.activatedRoute.parent.params.subscribe((parametros) => {
+      console.log('RUTA HIJA DETALLE USUARIO', parametros);
+    });
+
+--------------------------------------------------------------------------------
+CICLO DE VIDA DE UN COMPONENTE:
+ngOnInit()                  -> cuando el componenete está inicializando, despues del primer ngOnChanges()
+ngOnChanges()               -> cuando la data de las propiedad cambian
+ngDoCheck()                 -> cada vez que se hace una revisión del ciclo de detección de cambios
+ngAfterContentInit()        -> despues que se inserta algún tipo de contenido 
+ngAfterContentChecked()     -> despues de la revisión del contenido insertado
+ngAfterViewInit()           -> despues de la inicialización del componente o los componenetes hijos
+ngAfterViewChecked()        -> despues de cada una de las revisión de los componenetes hijos
+ngOnDestroy()               -> cuando se destruye el componente o se cambia de vista, también cuando se hace un ngIf del elemento
+
+en la mayoria de veces basta con el OnInit y el OnChanges
+
+SECCION 9 ***************************************************************
+1. ¿Qué es Auth0 y la documentación basada en Angular 2?
+2. Autenticación con Facebook, Twitter, Google, entre otros...
+3. Creación de un formulario de captura para la creación de usuarios.
+4. Personalización de la caja de login.
+5. Uso de servicios para bloquear rutas que no son válidas si el usuario no esta autenticado.
+6. Obtener la información del perfil del usuario ingresado.
+7. Entre otras cosas útiles para nuestras aplicaciones.
 
 
+Para generación de componente omitiendo archivo de estilos y test
+ng g c components/navbar -is --skipTests
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
 
