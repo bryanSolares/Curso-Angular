@@ -1,1 +1,8 @@
-<p>protegida works!</p>
+<h1>Perfil de Usuario</h1>
+<hr />
+
+
+<pre *ngIf="auth.userProfile$ | async as profile">
+  <img [src]="profile.picture" alt="Perfil">
+  <code>{{ profile | json }}</code>
+</pre>
