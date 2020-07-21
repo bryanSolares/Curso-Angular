@@ -541,6 +541,71 @@ para crear una referencia en el html de un formulario:
 #formulario="ngForm"
 --------------------------------------------------------------------------------
 
+
+
+SECCION 11 ***************************************************************
+EXISTEN DOS FORMAS DE MANEJAR FORMULARIOS
+Por template: toda la configuración es por el lado del html
+Reactivos: Todo el html queda limpio y toda la lógica queda por el lado del componente
+--------------------------------------------------------------------------------
+import { FormsModule } from '@angular/forms';
+permite que angular tome el control de los formularios por lo tanto cuando se pulse cualquier botón de submit no tendrá el comportamiento por defecto de un html
+ngModel
+name="nombre del campo"
+--------------------------------------------------------------------------------
+Cuando a un input se le agrega ngModel y name="cualquiercosa", permite que se agregan clases especiales de Angular al componente:
+ng-untouched = El campo no ha sido tocado 
+ng-printine = El valor inicial del campo no ha sido modificado
+ng-valid = Si el campo es válido
+ng-dirty = Cuando cambia la información del formulario
+ng-touched = El campo ha sido manipulado y se ha cambiado el foco
+
+Cuando se coloca a un formulario el atributo (ngSubmit)="metodo()": se está indicando que cuando se precione un botón de submit relacionado al formulario éste ejecutará el método indicado dentro de parétesis
+--------------------------------------------------------------------------------
+Para obtener el valor de un formulario es necesario nombrarlo con una variable de angular para identificarlo, se procede a hacer con el #, lo que va dentro de comillas será el tipo:
+#formulario="ngForm"
+luego de ésto se envía:
+(ngSubmit)="metodo(formulario)"
+
+Cuando se reciben los datos se tiene múltiples propiedades que se pueden usar para comprobar los datos del formulario:
+valid = si el formulario es válido
+invalid = es lo opuesto a lo anterior
+pending = para validaciones asincronas
+controls = controles o inputs que se les ha colocado a los campos (name="nombre del campo"), y sus respectivos atributos
+value= se encuentran los valores del formulario
+
+Para los campos de formulario se puede colocar valores por defecto:
+ngModel = indica solo que es un campo de angular para controlar
+[ngModel] = indica que solo recibe valores pero no emite
+[(ngModel)] = indica que recibe y emite valores 
+--------------------------------------------------------------------------------
+Una estructura de validaciones y atributos para los campos del HTML:
+<input class="form-control"
+               type="text"
+               name="nombre"
+               required
+               minlength="5"
+               placeholder="Nombre"
+               [class.is-invalid]="nombre.invalid && nombre.touched"
+               [ngModel]="usuario.nombre"
+               #nombre="ngModel">
+
+<input class="form-control"
+             type="email"
+             required
+             name="email"
+             placeholder="Correo electrónico"
+             [class.is-invalid]="correo.invalid && correo.touched"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             [ngModel]="usuario.correo"
+             #correo="ngModel">
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
