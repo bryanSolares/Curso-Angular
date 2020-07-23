@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-template',
@@ -10,11 +11,21 @@ export class TemplateComponent implements OnInit {
     nombre: 'Bryan',
     apellido: 'Solares',
     correo: 'solares.josue@outlook.com',
+    pais: 'GTM',
+    genero: 'M'
   };
 
-  constructor() {}
+  paises: any[] = [];
 
-  ngOnInit(): void {}
+  constructor(private paisService: PaisService) {}
+
+  ngOnInit(): void {
+    this.paisService.getPaises().subscribe((paises) => {
+      this.paises = paises;
+      this.paises.unshift({ nombre: '[Seleccione Pais]', codigo: '' }); //agrega elemento a primera posición del arreglo
+      console.log(paises);
+    });
+  }
 
   guardar(forma: NgForm) {
     if (forma.invalid) {

@@ -1,4 +1,4 @@
-Versionamiento y significado
+﻿Versionamiento y significado
 7.0.2
 
 2=Parches, retrocompatible, arreglo de errores
@@ -601,7 +601,9 @@ Una estructura de validaciones y atributos para los campos del HTML:
              #correo="ngModel">
 
 --------------------------------------------------------------------------------
-
+Para usar formularios reactivos es necesario la importación en app.module.ts:
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+y luego añadirlo a los imports
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
