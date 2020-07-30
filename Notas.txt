@@ -604,6 +604,14 @@ Una estructura de validaciones y atributos para los campos del HTML:
 Para usar formularios reactivos es necesario la importación en app.module.ts:
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 y luego añadirlo a los imports
+
+
+
+
+
+SECCION 12 ***************************************************************
+Para creación rápida de un archivo de rutas:
+ng g m appRouting --flat
 --------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
