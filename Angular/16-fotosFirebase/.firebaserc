@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-crud-firebase-cfd5b": {
+      "hosting": {
+        "fotosFirebase": [
+          "angular-crud-firebase-cfd5b"
+        ]
+      }
+    }
+  }
+}
