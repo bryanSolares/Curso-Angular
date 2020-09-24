@@ -1,12 +1,24 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="/home">Movies</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" placeholder="Search Movie">Search</button>
-    </form>
+    <ul class="navbar-nav mr-auto"></ul>
+    <div class="form-inline my-2 my-lg-0">
+      <input
+        #txtBuscar
+        (keyup.enter)="searchMovie(txtBuscar.value)"
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        (click)="searchMovie(txtBuscar.value)"
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+        placeholder="Search Movie"
+      >
+        Search
+      </button>
+    </div>
   </div>
 </nav>
